@@ -20,3 +20,9 @@ The only "big" upfront choices I'll make about this are:
 - Use [Redux](https://redux.js.org/). Choosing a state management library this early could certainly qualify as trying to do a big upfront design without really having explored the problem properly, and I would try to avoid it on a regular project. However, one of the goals of this project is to demonstrate competancy with this particular library for job interviews.
 
 This project is only meant to take a few hours, so tradeoffs will be made.
+
+## One
+Now that we've got out project roughly set up, we need to take a stab at writing a full deployment test, aka a "Walking Skeleton". This should be a test that builds, deploys and assets that we understand our system dependencies enough to automate them.
+
+The deployment target for this project will be [GitHub Pages](https://pages.github.com/). I'm following the process laid out [here](https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md#deployment).
+
