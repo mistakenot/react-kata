@@ -70,3 +70,5 @@ Now we make it pass by doing the simplest thing we can think of. After doing tha
 - Group together related code.
 
 Can't see any oppotunities for that here, Onwards.
+
+For the sake of brevity, I'm not going to commit at each stage of the test cycle unless the changes are large, which hopefully they never should be. I'll aim to commit after each refactor stage. I'll be using the above methodology to guide my actions inbetween.
