@@ -26,3 +26,10 @@ Now that we've got out project roughly set up, we need to take a stab at writing
 
 The deployment target for this project will be [GitHub Pages](https://pages.github.com/). I'm following the process laid out [here](https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md#deployment).
 
+The deployment test has been implemented simply using [Jasmine](https://jasmine.github.io/) and [Selenium](https://github.com/SeleniumHQ/selenium). Running this test will start a browser, go to the url defined in the [package.json](/package.json) as the homepage and assert against it.
+
+You need to have [Firefox](https://www.mozilla.org/en-US/firefox/new/) and [GeckoDriver](https://github.com/mozilla/geckodriver/releases) installed. Make sure the GeckoDriver exe is in your path.
+
+To deploy and test, run `npm run deploy`. One thing left to do is make sure that there is a unique build number that you can assert against on the page somewhere. Will come back to this due to time pressure.
+
+**TODO** Add unique build number to page to assert against.

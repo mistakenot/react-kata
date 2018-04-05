@@ -20,3 +20,6 @@ The source code for the feature is organised [by feature](https://jaysoo.ca/2016
 ## Development Process
 
 The development process for this kata is documented in the file [diary.md](/diary.md). It is split into a few numbered stages. These stages are marked in the repositry history using tags: `zero`, `one` `two` and so on. For instance, to jump to the very start of development, you would use `git checkout zero`. To list all available tagged stages, use `git tag -l`.
+
+## TODOs
+- Add unique build number to page to assert against when doing deployment tests.
