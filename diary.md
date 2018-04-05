@@ -12,7 +12,7 @@ The methodology I want to use is loosely inspired by the book [Growing Object-Or
 
 I'm going to emphasize practicality over rigorously trying to follow any particular doctrine. As described in the [readme](README.md), I'll mark the start of the stages of the work with git tags.
 
-## Zero
+## Zero - Setup project template.
 Setup. Use `create-react-app` to generate a simple, functional React skeleton. I'm deliberately trying to avoid making too many choices up front about what tools I should or shouldn't need, and will try to add thigs as I need them. At the moment, just standard admin of readme files and other bits and pieces.
 
 The only "big" upfront choices I'll make about this are:
@@ -21,7 +21,7 @@ The only "big" upfront choices I'll make about this are:
 
 This project is only meant to take a few hours, so tradeoffs will be made.
 
-## One
+## One - Create walking skeleton deployment test.
 Now that we've got out project roughly set up, we need to take a stab at writing a full deployment test, aka a "Walking Skeleton". This should be a test that builds, deploys and assets that we understand our system dependencies enough to automate them.
 
 The deployment target for this project will be [GitHub Pages](https://pages.github.com/). I'm following the process laid out [here](https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md#deployment).
@@ -33,3 +33,34 @@ You need to have [Firefox](https://www.mozilla.org/en-US/firefox/new/) and [Geck
 To deploy and test, run `npm run deploy`. One thing left to do is make sure that there is a unique build number that you can assert against on the page somewhere. Will come back to this due to time pressure.
 
 **TODO** Add unique build number to page to assert against.
+
+## Two - Implement first feature area.
+Feature time. Looking at the requirements, I can see three main feature areas that we need to think about:
+
+- Display our data.
+- Filter our data.
+- Sort our data.
+
+These seem like a reasonably good guess at the distinct responsibilities that are requires to fulfill the requirements. This might change as we go along, but its a good place to start. We'll do the display task first.
+
+For each of the feature areas, I'm going to start by trying to think about the domain input events that are associated with that feature. From these events, I'll tease out a set of acceptance tests that try to describe the behaviour of the component in the language of the domain, not the technological implementation. Our domain events will eventually translate directly into Redux actions. We'll then proceed to write code to get each acceptance test to pass. If we find ourselves writing code that doesn't seem to "fit" with the reponsibility of the component we are working on, we split if off into a sub component, again using tests to guide how that sub component should behave in an iterative fashion.
+
+In the case of our display component, our requirements state that:
+
+```
+Display the data on a web page in a format you think would be suitable for a simple search results screen.
+```
+
+In terms of events, it's hard to think of many, besides receiving the data to display. It doesn't actually do anything. However, we do need to display it faithfully.
+
+Using this sentence and the [test data](/data.json) as a guide, I think we should end up with acceptance criteria like:
+1) Displays a SearchResults UI component successfully.
+1) Displays a representation for each search result item.
+2) Display a representation of each item where each item:
+- Has a name
+- Has a star rating
+- Has a list of facilities
+
+This will do for starters. We'll start by implementing the first one. As we're starting to get into the weeds of writing tests, we'll also add a few libraries, chiefly [Enzyme](http://airbnb.io/enzyme/), to make life a bit easier.
+
+I've written our first failing acceptance test in [search-results.test.js](/src/search-results/search-results.test.js). This is how we start any new component.
