@@ -64,3 +64,9 @@ Using this sentence and the [test data](/data.json) as a guide, I think we shoul
 This will do for starters. We'll start by implementing the first one. As we're starting to get into the weeds of writing tests, we'll also add a few libraries, chiefly [Enzyme](http://airbnb.io/enzyme/), to make life a bit easier.
 
 I've written our first failing acceptance test in [search-results.test.js](/src/search-results/search-results.test.js). This is how we start any new component.
+
+Now we make it pass by doing the simplest thing we can think of. After doing that, we look to see if we can make small and incremental refacting changes to:
+- Remove duplication.
+- Group together related code.
+
+Can't see any oppotunities for that here, Onwards.

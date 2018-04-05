@@ -1,1 +1,5 @@
-export const SearchResults = {}
+import React from 'react';
+
+export const SearchResults = () => (
+  <div></div>
+)
