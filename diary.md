@@ -12,7 +12,7 @@ The methodology I want to use is loosely inspired by the book [Growing Object-Or
 
 I'm going to emphasize practicality over rigorously trying to follow any particular doctrine. As described in the [readme](README.md), I'll mark the start of the stages of the work with git tags.
 
-## One
+## Zero
 Setup. Use `create-react-app` to generate a simple, functional React skeleton. I'm deliberately trying to avoid making too many choices up front about what tools I should or shouldn't need, and will try to add thigs as I need them. At the moment, just standard admin of readme files and other bits and pieces.
 
 The only "big" upfront choices I'll make about this are:
@@ -20,4 +20,3 @@ The only "big" upfront choices I'll make about this are:
 - Use [Redux](https://redux.js.org/). Choosing a state management library this early could certainly qualify as trying to do a big upfront design without really having explored the problem properly, and I would try to avoid it on a regular project. However, one of the goals of this project is to demonstrate competancy with this particular library for job interviews.
 
 This project is only meant to take a few hours, so tradeoffs will be made.
-
