@@ -23,15 +23,30 @@ describe('Search Results', () => {
     const items = [
       {Name: 'bob'},
       {Name: 'alice'}
-    ]
+    ];
     const wrapper = shallow(<SearchResults resultItems={items} />);
     const resultItemNames = wrapper
-      .find('.' + styles.searchResultsItemName + ' p')
+      .find('.' + styles.searchResultsItemName)
       .map(resultItem => resultItem.text());
 
     const expected = items.map(i => i.Name);
 
     expect(resultItemNames).toEqual(expected);
-  });  
+  });
+
+  it('displays a star rating for each result item', () => {
+    const items = [
+      {Name: 'bob', StarRating: 3},
+      {Name: 'alice', StarRating: 4}
+    ];
+    const wrapper = shallow(<SearchResults resultItems={items} />);
+    const resultItemNames = wrapper
+      .find('.' + styles.searchResultsItemRating)
+      .map(resultItem => resultItem.text());
+
+    const expected = items.map(i => i.StarRating.toString());
+
+    expect(resultItemNames).toEqual(expected);
+  });
 
 });
