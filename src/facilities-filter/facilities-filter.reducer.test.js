@@ -10,4 +10,29 @@ describe('Facilities filter reducer', () => {
 
     expect(actual).toEqual([false]);
   });
+
+  it('can turn a filter from off to on on a valid toggle event', () => {
+    const state = [false];
+    const action = toggleFilter(0);
+    const actual = reducer(state, action);
+
+    expect(actual).toEqual([true]);
+  });
+
+  // Would it be better to fail here / report to user than ignore?
+  it('can ignore an out of range toggle event', () => {
+    const state = [];
+    const action = toggleFilter(0);
+    const actual = reducer(state, action);
+
+    expect(actual).toEqual([]);
+  });
+
+  it('can ignore an invalid out of range toggle event', () => {
+    const state = [];
+    const action = toggleFilter(-1);
+    const actual = reducer(state, action);
+
+    expect(actual).toEqual([]);
+  });
 })

@@ -91,4 +91,8 @@ Now we are starting to deal with state and events. Here, we are going to begin b
 
 Have a look at [facilities-filter.actions.js](/src/facilities-filter/facilities-filter.actions.js) for a start. We're going to define one very simple user action with a constructor function.
 
-Next we implement the [acceptance criteria for the reducer](/src/facilities-filter/facilities-filter.reducer.test.js). We start by writing the simplest happy path acceptance test we can think of and watch it fail.
+Next we implement the [acceptance criteria for the reducer](/src/facilities-filter/facilities-filter.reducer.test.js). We start by writing the simplest happy path acceptance test we can think of and watch it fail. Then we do the simplest thing to pass it and move on to the next acceptance criteria for the feature. At the moment, the error cases are ignored. It might be better in future to throw or report the error somehow.
+
+**TODO** Error handling.
+
+We're going to follow the pattern of going from Inputs -> Middle -> Outputs. So, now we've done the inputs, next are is the presentation layer. We write a failing test with a stub component and then fill it in, as before.
