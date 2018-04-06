@@ -1,18 +1,17 @@
 import React from 'react';
 
+import FacilitiesFilter from './facilities-filter';
+
 export const styles = {
   facility: 'facilities-filter-facility',
   facilityStatus: 'facilities-filter-status'
 }
 
-const FacilitiesFilter = props => (
+const FacilitiesFilterForm = props => (
   <div>
   { props.labels.map((l, i) =>
-    <div key={i}>
-      <p className={styles.facility}>{l}</p>
-      <input className={styles.facilityStatus} type='checkbox' checked={props.statuses[i]} />}
-    </div>) }
+    <FacilitiesFilter key={i} label={l} state={props.statuses[i]} />) }
   </div>
 )
 
-export default FacilitiesFilter;
+export default FacilitiesFilterForm;
