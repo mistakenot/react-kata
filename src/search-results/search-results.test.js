@@ -23,12 +23,19 @@ describe('Search Results', () => {
       Name: "hoteltwo",
       StarRating: 2,
       Facilities: ["pool"]
-    }]
-    ;
+    }];
+
     const wrapper = shallow(<SearchResults resultItems={items} />);
     const resultItemCount = wrapper.find(SearchResultsItem).length;
     
     expect(resultItemCount).toEqual(items.length);
+  });
+
+  it('displays a representation of an empty result item list', () => {
+    const wrapper = shallow(<SearchResults resultItems={[]} />);
+    const resultItemCount = wrapper.find(SearchResultsItem).length;
+    
+    expect(resultItemCount).toEqual(0);
   });
 
 });

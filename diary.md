@@ -78,3 +78,7 @@ It's time to do some refactoring. Our SearchResults element is starting to look 
 We've split out a seperate component, SearchResultsItems and put it into its own sub folder. We've also moved the test that are specific to displaying an individual component into that folder.
 
 All is passing and well.
+
+I've now implemented the last remaining AC to display the facilities and am now going to add a few edge cases to the tests that go beyond the 'Happy Path'. Not going to go nuts because of time.
+
+**TODO** Add more edge case tests for failures
