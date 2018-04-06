@@ -95,4 +95,4 @@ Next we implement the [acceptance criteria for the reducer](/src/facilities-filt
 
 **TODO** Error handling.
 
-We're going to follow the pattern of going from Inputs -> Middle -> Outputs. So, now we've done the inputs, next are is the presentation layer. We write a failing test with a stub component and then fill it in, as before. Keep repeating the cycle until we can refactor out into a smaller component.
+We're going to follow the pattern of going from Inputs -> Middle -> Outputs. So, now we've done the inputs, next are is the presentation layer. We write a failing test with a stub component and then fill it in, as before. Keep repeating the cycle until we can refactor out into a smaller component. Also implemented upways communication of events from the dumb component (facilities-filter) to the smart component (facilities-filter-form), that translates a DOM event into a domain event before pushing it up.

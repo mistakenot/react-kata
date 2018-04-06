@@ -1,8 +1,9 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 
 import FacilitiesFilterForm, { styles } from './facilities-filter-form';
 import FacilitiesFilter from './facilities-filter';
+import { types } from './facilities-filter.actions';
 
 describe('Facilities filter form', () => {
   const facilities = ['one', 'two', 'three'];
@@ -20,6 +21,20 @@ describe('Facilities filter form', () => {
 
     expect(facillityCount).toEqual(facilities.length); 
   });
+
+  it('can raise a toggle filter action when receiving a click event from child', () => {
+    const spy = jest.fn();
+    const wrapper = mount(<FacilitiesFilterForm labels={facilities} statuses={statuses} onToggleFilter={spy} />);
+    
+    wrapper
+      .find(FacilitiesFilter)
+      .first()
+      .find('input')
+      .simulate('click');
+    
+    expect(spy.mock.calls.length).toBe(1);
+    expect(spy.mock.calls[0][0].type).toEqual(types.toggleFilter);
+  })
 
 });
  

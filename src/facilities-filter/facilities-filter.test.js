@@ -31,5 +31,16 @@ describe('Facilities filter form', () => {
 
     expect(checkedStatus).toEqual(status);
   });
+
+  it('can raise an onclick event when clicked', () => {
+    const spy = jest.fn();
+    const wrapper = shallow(<FacilitiesFilter labels={label} status={status} onClick={spy} />);
+    wrapper
+      .find('.' + styles.facilityStatus)
+      .first()
+      .simulate('click');
+
+    expect(spy.mock.calls.length).toEqual(1);
+  })
 });
  
