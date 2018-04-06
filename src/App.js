@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 
 import { Grid, Navbar, Jumbotron, Button } from 'react-bootstrap';
 
+import SearchResults from './search-results/search-results.js';
+
+const items = require('./data.json'); 
 
 class App extends Component {
   render() {
@@ -21,13 +24,7 @@ class App extends Component {
           <Grid>
             <h1>Welcome to React</h1>
             <p>
-              <Button
-                bsStyle="success"
-                bsSize="large"
-                href="http://react-bootstrap.github.io/components.html"
-                target="_blank">
-                View React Bootstrap Docs
-              </Button>
+              <SearchResults resultItems={items} />
             </p>
           </Grid>
         </Jumbotron>

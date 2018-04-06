@@ -82,3 +82,6 @@ All is passing and well.
 I've now implemented the last remaining AC to display the facilities and am now going to add a few edge cases to the tests that go beyond the 'Happy Path'. Not going to go nuts because of time.
 
 **TODO** Add more edge case tests for failures
+
+Now we've got our initial AC's passing, it's worth having a bit of a review. Something we haven't done yet is actually have a look at how this looks on the screen. I've modified App.js to display the items on screen and they don't look good. I'm going to change their appearance whilst using my test suite to make sure that I don't introduce any regressions.
+
