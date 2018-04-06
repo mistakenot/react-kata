@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-
 import { Grid, Navbar, Jumbotron, Row, Col } from 'react-bootstrap';
 
 import SearchResults from './search-results/search-results.js';

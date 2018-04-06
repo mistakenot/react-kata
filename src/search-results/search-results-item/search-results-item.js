@@ -21,9 +21,7 @@ const SearchResultsItem = props => (
       )}
       </h2>
     <p>
-      <div>
       { _.range(props.StarRating).map((_, i) => <Glyphicon key={i} className={styles.searchResultsItemStar} glyph="star" />) }
-      </div>
     </p>
   </ListGroupItem>
 );

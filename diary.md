@@ -85,3 +85,10 @@ I've now implemented the last remaining AC to display the facilities and am now 
 
 Now we've got our initial AC's passing, it's worth having a bit of a review. Something we haven't done yet is actually have a look at how this looks on the screen. I've modified App.js to display the items on screen and they don't look good. I'm going to change their appearance whilst using my test suite to make sure that I don't introduce any regressions.
 
+## Three - Implement filtering
+
+Now we are starting to deal with state and events. Here, we are going to begin by writing our redux actions first before moving onto the how the different components react to it.
+
+Have a look at [facilities-filter.actions.js](/src/facilities-filter/facilities-filter.actions.js) for a start. We're going to define one very simple user action with a constructor function.
+
+Next we implement the [acceptance criteria for the reducer](/src/facilities-filter/facilities-filter.reducer.test.js). We start by writing the simplest happy path acceptance test we can think of and watch it fail.
