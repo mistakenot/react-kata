@@ -9,7 +9,7 @@ export const styles = {
 
 const FacilitiesFilter = props => (
   <Checkbox inline className={styles.facilityStatus} checked={props.status} onClick={props.onClick}>
-    {props.label}
+    <div className={styles.facility}>{props.label}</div>
   </Checkbox>
 )
 
