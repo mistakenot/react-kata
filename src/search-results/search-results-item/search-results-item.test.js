@@ -27,11 +27,10 @@ describe('Search Results Item', () => {
   it('displays a star rating', () => {
     const wrapper = shallow(<SearchResultsItem {...item}  />);
     const resultItemNames = wrapper
-      .find('.' + styles.searchResultsItemRating)
-      .first()
-      .text()
+      .find('.' + styles.searchResultsItemStar)
+      .length;
 
-    expect(resultItemNames).toEqual(item.StarRating.toString());
+    expect(resultItemNames).toEqual(item.StarRating);
   });
 
   it('displays facilities', () => {

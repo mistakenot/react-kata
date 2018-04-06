@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Grid, Navbar, Jumbotron, Button } from 'react-bootstrap';
+import { Grid, Navbar, Jumbotron, Row, Col } from 'react-bootstrap';
 
 import SearchResults from './search-results/search-results.js';
 
@@ -22,10 +22,12 @@ class App extends Component {
         </Navbar>
         <Jumbotron>
           <Grid>
-            <h1>Welcome to React</h1>
-            <p>
-              <SearchResults resultItems={items} />
-            </p>
+            <h1>Search Results</h1>
+            <Row>
+              <Col md={6}>
+                <SearchResults resultItems={items} />
+              </Col>
+            </Row>
           </Grid>
         </Jumbotron>
       </div>
