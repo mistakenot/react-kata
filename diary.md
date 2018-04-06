@@ -72,3 +72,9 @@ Now we make it pass by doing the simplest thing we can think of. After doing tha
 Can't see any oppotunities for that here, Onwards.
 
 For the sake of brevity, I'm not going to commit at each stage of the test cycle unless the changes are large, which hopefully they never should be. I'll aim to commit after each refactor stage. I'll be using the above methodology to guide my actions inbetween.
+
+It's time to do some refactoring. Our SearchResults element is starting to look a bit messy. 
+
+We've split out a seperate component, SearchResultsItems and put it into its own sub folder. We've also moved the test that are specific to displaying an individual component into that folder.
+
+All is passing and well.
