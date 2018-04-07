@@ -109,3 +109,6 @@ Connecting everything revealed that the checkbox wasn't working properly, so I c
 
 Also, I noticed an error I made - in the first place, I didn't really write proper acceptance test when I came to add the facility filter functionality. I jumped straight to the component, which goes against the ethos of TDD. I'll add it retrospectively now and will remember to do it correctly for the next one.
 
+# 4. Sorting
+
+Started by implementing a failing e2e test in spec/acceptance.spec.js, then tests to the layout page that pass.

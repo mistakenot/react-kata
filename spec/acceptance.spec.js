@@ -16,6 +16,10 @@ describe('Application', () => {
     await driver.get('http://localhost:' + port);
   });
 
+  beforeEach(async () => {
+    await driver.navigate().refresh();
+  });
+
   it('can display a list of search results', async () => {
     const elements = await driver.findElements(cssOf('.search-results-item-name'));
     const actual = await Promise.all(elements.map(e => e.getText()));
@@ -30,6 +34,16 @@ describe('Application', () => {
     let filteredElements = await driver.findElements(cssOf('.search-results-item-name'))
     
     expect(filteredElements.length).toEqual(2);
+  });
+
+  it('can sort results by rating descending', async () => {
+    const sortElement = await driver.findElement(cssOf('.sorting'));
+    await sortElement.click();
+
+    const elements = await driver.findElements(cssOf('.search-results-item-name'));
+    const actual = await Promise.all(elements.map(e => e.getText()));
+
+    expect(actual).toEqual(['hotelone', 'hotelthree', 'hoteltwo']);
   });
 
   afterAll(async () => {

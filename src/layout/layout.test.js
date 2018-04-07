@@ -6,27 +6,40 @@ import FilterForm from '../facilities-filter/facilities-filter-form/facilities-f
 import SearchResults from '../search-results/search-results';
 
 describe('Layout component', () => {
-  const props = { 
-    items: [],
-    filters: {
-      labels: [],
-      states: []
-    },
-    dispatch: jest.fn()
-  };
+  let props;
+  let wrapper;
 
-  it('renders without crashing', () => {
-    shallow(<Layout {...props} />);
+  beforeEach(() => {
+    props = { 
+      items: [],
+      filters: {
+        labels: [],
+        states: []
+      },
+      dispatch: jest.fn()
+    };
+    
+    wrapper = shallow(<Layout {...props} />);
   });
 
   it('renders filter component', () => {
-    const wrapper = shallow(<Layout {...props} />);
     expect(wrapper.find(FilterForm)).toBeDefined();
   });
 
   it('renders search component', () => {
-    const wrapper = shallow(<Layout {...props} />);
     expect(wrapper.find(SearchResults)).toBeDefined();
+  });
+
+  it('renders sorting component', () => {
+    expect(wrapper.find('.sorting').length).toEqual(1);
+  });
+
+  it('dispatches sort event on clicking sort', () => {
+    wrapper
+      .find('.sorting')
+      .simulate('click');
+    
+    expect(props.dispatch.mock.calls[0]).toEqual(['CLICK_SORT']);
   });
 
   it('dispatches event when form raises onToggleFilter event', () => {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Navbar, Jumbotron, Row, Col } from 'react-bootstrap';
+import { Grid, Navbar, Jumbotron, Row, Col, Button } from 'react-bootstrap';
 
 import SearchResults from '../search-results/search-results';
 import FilterForm from '../facilities-filter/facilities-filter-form/facilities-filter-form';
@@ -19,6 +19,11 @@ const Layout = props => (
     <Jumbotron>
       <Grid>
         <h1>Search Results</h1>
+        <Row>
+          <Col md={6}>
+            <Button className='sorting' onClick={() => props.dispatch('CLICK_SORT')}>Sort</Button>
+          </Col>
+        </Row>
         <Row>
           <Col md={6}>
             <FilterForm filters={props.filters} onToggleFilter={props.dispatch} />
