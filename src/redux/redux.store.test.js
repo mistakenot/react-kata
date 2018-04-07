@@ -2,6 +2,7 @@ import store from './redux.store';
 
 import { loadSearchResultItems } from '../search-results/search-results.actions';
 import { loadFacilities } from '../facilities-filter/facilities-filter.actions';
+import { toggleSorting } from '../sorting/sorting.actions';
 
 describe('Store', () => {
   // These aren't the best written tests because they import stuff from other domains for actions,
@@ -29,4 +30,11 @@ describe('Store', () => {
     };
     expect(actual.filters).toEqual(expected);
   });
+
+  it('can update sort state', () => {
+    store.dispatch(toggleSorting);
+
+    const actual = store.getState();
+    expect(actual.sorting).toEqual(true);
+  })
 })

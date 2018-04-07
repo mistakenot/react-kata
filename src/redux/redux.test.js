@@ -87,6 +87,24 @@ describe('Redux component', () => {
 
       expect(actual.items).toEqual([]);
     });
+
+    it('can sort items depending on sort state', () => {
+      let state = {
+        filters: {
+          'f1': false,
+          'f2': false
+        },
+        items: [
+          { Name: 'one', Facilities: ['f1'], StarRating: 4 },
+          { Name: 'one', Facilities: ['f1'], StarRating: 3 },
+          { Name: 'two', Facilities: ['f2'], StarRating: 5 }, ],
+        sorting: true
+      }
+
+      let actual = mapStateToProps(state);
+      let ratings = actual.items.map(i => i.StarRating);
+      expect(ratings).toEqual([5,4,3]);
+    });
   });
 
   describe('dispatch to props', () => {

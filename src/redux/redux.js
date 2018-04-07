@@ -18,9 +18,14 @@ export const mapStateToProps = state => {
       _.intersection(enabledFilters, item.Facilities).length >= enabledFilters.length)
     .value();
 
+  const sortedItems = _(filteredItems)
+    .sortBy(i => i.StarRating)
+    .reverse()
+    .value();
+
   return {
     filters: state.filters,
-    items: filteredItems
+    items: state.sorting ? sortedItems : filteredItems
   };
 }
 
