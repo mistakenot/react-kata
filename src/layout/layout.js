@@ -3,6 +3,7 @@ import { Grid, Navbar, Jumbotron, Row, Col, Button } from 'react-bootstrap';
 
 import SearchResults from '../search-results/search-results';
 import FilterForm from '../facilities-filter/facilities-filter-form/facilities-filter-form';
+import Sorting from '../sorting/sorting';
 
 const Layout = props => (
   <div>
@@ -21,12 +22,12 @@ const Layout = props => (
         <h1>Search Results</h1>
         <Row>
           <Col md={6}>
-            <Button className='sorting' onClick={() => props.dispatch('CLICK_SORT')}>Sort</Button>
+            <Sorting dispatch={props.dispatch} />
           </Col>
         </Row>
         <Row>
           <Col md={6}>
-            <FilterForm filters={props.filters} onToggleFilter={props.dispatch} />
+            <FilterForm filters={props.filters} dispatch={props.dispatch} />
           </Col>
         </Row>
         <Row>

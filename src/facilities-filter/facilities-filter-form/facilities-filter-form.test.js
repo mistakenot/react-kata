@@ -26,7 +26,7 @@ describe('Facilities filter form', () => {
 
   it('can raise a toggle filter action when receiving a click event from child', () => {
     const spy = jest.fn();
-    const wrapper = mount(<FacilitiesFilterForm filters={filters} onToggleFilter={spy} />);
+    const wrapper = mount(<FacilitiesFilterForm filters={filters} dispatch={spy} />);
     
     wrapper
       .find(FacilitiesFilterItem)

@@ -18,7 +18,7 @@ const FacilitiesFilterForm = props => (
         key={label} 
         label={label} 
         status={enabled} 
-        onClick={() => props.onToggleFilter(toggleFilter(label))} />).value() }
+        onClick={() => props.dispatch(toggleFilter(label))} />).value() }
     </FormGroup>
   </form>
 )
