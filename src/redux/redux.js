@@ -7,15 +7,18 @@ import { loadFacilities } from '../facilities-filter/facilities-filter.actions';
 import { loadSearchResultItems } from '../search-results/search-results.actions';
 
 export const mapStateToProps = state => {
-  const allFacilities = _(state.items).flatMap(i => i.Facilities).uniq().value();
-  const enabledFilters = allFacilities.filter((_, i) => state.enabledFilters[i]);
-  const filteredItems = _.filter(state.items, (item) => _.intersection(enabledFilters, item.Facilities).length > 0);
-  
+  const enabledFilters = _(state.filters)
+    .pickBy((enabled, label) => enabled)
+    .map((enabled, label) => label)
+    .value();
+
+  const filteredItems =_(state.items)
+    .filter((item) => 
+      _.intersection(enabledFilters, item.Facilities).length > 0)
+    .value();
+
   return {
-    filters: {
-      states: state.enabledFilters,
-      labels: allFacilities
-    },
+    filters: state.filters,
     items: filteredItems
   };
 }
@@ -28,15 +31,14 @@ const ConnectedLayout = connect(
 )(Layout);
 
 class Redux extends Component {
-  constructor(props) {
-    super(props);
-  }
-
+  
   componentDidMount() {
-    const filterValues = this.props.items.map(_ => true);
-    const loadFiltersActions = loadFacilities(filterValues);
-    this.props.store.dispatch(loadFiltersActions);
-
+    const allFilters = _(this.props.items)
+      .flatMap(item => item.Facilities)
+      .value();
+    const allFiltersAction = loadFacilities(allFilters);
+    this.props.store.dispatch(allFiltersAction);
+    
     const loadItemsAction = loadSearchResultItems(this.props.items);
     this.props.store.dispatch(loadItemsAction);
   }

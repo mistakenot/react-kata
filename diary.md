@@ -102,3 +102,5 @@ We're going to follow the pattern of going from Inputs -> Middle -> Outputs. So,
 We've implemented the first component that has behaviour. However, it is not currently linked in to the rest of the application, so we need to implement Redux. I like to try to keep all redux-specfic library code in a single file, so we'll implement a [Redux](/src/Redux.js) component.
 
 We've seperated our concerns, and connected up our reducers, but we need to load the initial data. We need to add actions and handlers for loading the initial data. I've also added some tests for the redux store and combined reducers that should of been there earlier.
+
+I'm not really happy with how the filtering state is represented and calculated. Using an array of bools and relying on the index seems a bit flimsy, so I'm going to change it to use a key -> value map instead. I start by changing the tests first, then the code.

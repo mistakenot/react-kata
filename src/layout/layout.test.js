@@ -11,7 +11,8 @@ describe('Layout component', () => {
     filters: {
       labels: [],
       states: []
-    }
+    },
+    dispatch: jest.fn()
   };
 
   it('renders without crashing', () => {
@@ -27,4 +28,17 @@ describe('Layout component', () => {
     const wrapper = shallow(<Layout {...props} />);
     expect(wrapper.find(SearchResults)).toBeDefined();
   });
+
+  it('dispatches event when form raises onToggleFilter event', () => {
+    const wrapper = shallow(<Layout {...props} />);
+    
+    wrapper
+      .find(FilterForm)
+      .first()
+      .props()
+      .onToggleFilter(1)
+
+    const call = props.dispatch.mock.calls[0];
+    expect(call).toEqual([1]);
+  })
 });

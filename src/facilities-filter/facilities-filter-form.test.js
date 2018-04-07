@@ -6,31 +6,33 @@ import FacilitiesFilter from './facilities-filter';
 import { types } from './facilities-filter.actions';
 
 describe('Facilities filter form', () => {
-  const facilities = ['one', 'two', 'three'];
-  const statuses = [true, false, true];
+  const filters = {
+    ['one']: true,
+    ['two']: false
+  };
 
   it('renders without crashing', () => {
-    shallow(<FacilitiesFilterForm labels={facilities} statuses={statuses} />);
+    shallow(<FacilitiesFilterForm filters={filters} />);
   });
 
   it('can display a list of all facility options', () => {
-    const wrapper = shallow(<FacilitiesFilterForm labels={facilities} statuses={statuses} />);
+    const wrapper = shallow(<FacilitiesFilterForm filters={filters} />);
     const facillityCount = wrapper
       .find(FacilitiesFilter)
       .length;
 
-    expect(facillityCount).toEqual(facilities.length); 
+    expect(facillityCount).toEqual(2);
   });
 
   it('can raise a toggle filter action when receiving a click event from child', () => {
     const spy = jest.fn();
-    const wrapper = mount(<FacilitiesFilterForm labels={facilities} statuses={statuses} onToggleFilter={spy} />);
+    const wrapper = mount(<FacilitiesFilterForm filters={filters} onToggleFilter={spy} />);
     
     wrapper
       .find(FacilitiesFilter)
       .first()
       .find('input')
-      .simulate('click');
+      .simulate('change');
     
     expect(spy.mock.calls.length).toBe(1);
     expect(spy.mock.calls[0][0].type).toEqual(types.toggleFilter);

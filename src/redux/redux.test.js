@@ -2,8 +2,9 @@ import React from 'react';
 import { shallow, mount } from 'enzyme';
 
 import Redux, { mapStateToProps, mapDispatchToProps } from './redux';
-import { types as searchActionTypes } from '../search-results/search-results.actions';
-import { types as filterActionTypes } from '../facilities-filter/facilities-filter.actions';
+import { types as searchActionTypes, loadSearchResultItems } from '../search-results/search-results.actions';
+import { types as filterActionTypes, loadFacilities } from '../facilities-filter/facilities-filter.actions';
+
 
 describe('Redux component', () => {
   let mockStore;
@@ -21,22 +22,24 @@ describe('Redux component', () => {
   });
 
   it('initilises redux on mount', () => {
-    shallow(<Redux items={[]} store={mockStore} />);
+    const items = [{Name: 'name', Facilities: ['one']}];
+    shallow(<Redux items={items} store={mockStore} />);
     
     expect(mockStore.dispatch.mock.calls.length).toEqual(2);
     const firstArgs = mockStore.dispatch.mock.calls[0];
     const secondArgs = mockStore.dispatch.mock.calls[1];
 
-    expect(firstArgs[0]).toEqual({"items": [], "type": filterActionTypes.loadData});
-    expect(secondArgs[0]).toEqual({"items": [], "type": searchActionTypes.loadSearchResultItems});
+    expect(firstArgs[0]).toEqual(loadFacilities(['one']));
+    expect(secondArgs[0]).toEqual(loadSearchResultItems(items));
   });
 
   describe('state to props', () => {
     it('can map redux state to application state', () => {
       let state = {
-        enabledFilters: [
-          false, true
-        ],
+        filters: {
+          'f1': false,
+          'f2': true
+        },
         items: [
           { Name: 'one', Facilities: ['f1', 'f2'] },
           { Name: 'two', Facilities: ['f1'] } ]
@@ -44,10 +47,7 @@ describe('Redux component', () => {
 
       let actual = mapStateToProps(state);
       let expected = {
-        filters: {
-          states: [false, true],
-          labels: ['f1', 'f2']
-        },
+        filters: state.filters,
         items: [
           { Name: 'one', Facilities: ['f1', 'f2'] }
         ]
@@ -60,7 +60,6 @@ describe('Redux component', () => {
   describe('dispatch to props', () => {
     it('can correctly assign dispatch', () => {
       const actual = mapDispatchToProps(1);
-
       expect(actual.dispatch).toEqual(1);
     });
   });

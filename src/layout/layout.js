@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Grid, Navbar, Jumbotron, Row, Col } from 'react-bootstrap';
 
 import SearchResults from '../search-results/search-results';
@@ -21,7 +21,7 @@ const Layout = props => (
         <h1>Search Results</h1>
         <Row>
           <Col md={6}>
-            <FilterForm labels={props.filters.labels} statuses={props.filters.states} onToggleFilter={() => {}} />
+            <FilterForm filters={props.filters} onToggleFilter={props.dispatch} />
           </Col>
         </Row>
         <Row>

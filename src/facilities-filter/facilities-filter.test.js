@@ -22,23 +22,34 @@ describe('Facilities filter form', () => {
   });
 
   it('can display an active facility filter', () => {
-    const wrapper = shallow(<FacilitiesFilter labels={label} status={status} />);
+    const wrapper = shallow(<FacilitiesFilter label={label} status={true} />);
+    const checkedStatus = wrapper
+      .find('.' + styles.facilityStatus)
+      .first()
+      .props()
+      .defaultChecked;
+
+    expect(checkedStatus).toEqual(true);
+  });
+
+  it('can display an inactive facility filter', () => {
+    const wrapper = shallow(<FacilitiesFilter label={label} status={false} />);
     const checkedStatus = wrapper
       .find('.' + styles.facilityStatus)
       .first()
       .props()
       .checked;
 
-    expect(checkedStatus).toEqual(status);
-  });
+    expect(checkedStatus).toEqual(undefined);
+  })
 
   it('can raise an onclick event when clicked', () => {
     const spy = jest.fn();
-    const wrapper = shallow(<FacilitiesFilter labels={label} status={status} onClick={spy} />);
+    const wrapper = shallow(<FacilitiesFilter label={label} status={status} onClick={spy} />);
     wrapper
       .find('.' + styles.facilityStatus)
       .first()
-      .simulate('click');
+      .simulate('change');
 
     expect(spy.mock.calls.length).toEqual(1);
   })

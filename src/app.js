@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import Redux from './redux/redux';
 import SearchResults from './search-results/search-results';

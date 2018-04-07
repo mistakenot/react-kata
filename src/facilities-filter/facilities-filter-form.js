@@ -1,4 +1,5 @@
 import React from 'react';
+import _ from 'lodash';
 
 import FacilitiesFilter from './facilities-filter';
 import { toggleFilter } from './facilities-filter.actions';
@@ -12,8 +13,12 @@ export const styles = {
 const FacilitiesFilterForm = props => (
   <form className={'inline'}>
     <FormGroup>
-    { props.labels.map((l, i) =>
-      <FacilitiesFilter key={i} label={l} state={props.statuses[i]} onClick={() => props.onToggleFilter(toggleFilter(i))} />) }
+    { _(props.filters).map((enabled, label) => 
+      <FacilitiesFilter 
+        key={label} 
+        label={label} 
+        status={enabled} 
+        onClick={() => props.onToggleFilter(toggleFilter(label))} />).value() }
     </FormGroup>
   </form>
 )

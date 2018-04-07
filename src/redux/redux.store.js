@@ -4,7 +4,7 @@ import searchReducer from '../search-results/search-results.reducer';
 import { combineReducers, createStore } from 'redux';
 
 const reducer = combineReducers({
-  enabledFilters: filterReducer,
+  filters: filterReducer,
   items: searchReducer
 });
 

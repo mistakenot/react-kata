@@ -8,7 +8,7 @@ export const styles = {
 }
 
 const FacilitiesFilter = props => (
-  <Checkbox inline className={styles.facilityStatus} checked={props.status} onClick={props.onClick}>
+  <Checkbox inline className={styles.facilityStatus} defaultChecked={props.status} onChange={props.onClick}>
     <div className={styles.facility}>{props.label}</div>
   </Checkbox>
 )

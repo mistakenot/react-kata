@@ -18,12 +18,15 @@ describe('Store', () => {
   });
 
   it('can update filter statuses', () => {
-    const items = [false];
+    const items = ['f1'];
     const action = loadFacilities(items);
 
     store.dispatch(action);
 
-    const actual = store.getState()
-    expect(actual.enabledFilters).toEqual(items);
+    const actual = store.getState();
+    const expected = {
+      ['f1']: true
+    };
+    expect(actual.filters).toEqual(expected);
   });
 })

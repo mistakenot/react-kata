@@ -1,14 +1,20 @@
 import { types } from './facilities-filter.actions';
 
-const defaultState = [];
+const defaultState = {};
 
 const reducer = (state = defaultState, action) => {
   switch(action.type) {
     case types.toggleFilter: {
-      return state.map((value, index) => action.index === index ? !value : value);
+      let key = action.key;
+      if (state[key] !== undefined) {
+        return {...state, [key]: !state[key] }
+      }
+      return state;
     }
     case types.loadData: {
-      return action.items;
+      return action
+        .items
+        .reduce((state, item) => ({...state, [item]: true}), {});
     }
     default:
       return state;

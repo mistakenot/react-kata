@@ -3,9 +3,9 @@ export const types = {
   loadData: 'FACILITIES_FILTER_LOAD_DATA'
 }
 
-export const toggleFilter = (index) => ({
+export const toggleFilter = (key) => ({
   type: types.toggleFilter,
-  index: index
+  key
 });
 
 export const loadFacilities = (facilities) => ({
