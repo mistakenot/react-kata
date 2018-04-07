@@ -31,6 +31,6 @@ const Layout = props => (
         </Row>
       </Grid>
     </Jumbotron>
-  </div>);
+</div>);
 
 export default Layout;

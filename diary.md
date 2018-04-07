@@ -100,3 +100,5 @@ We're going to follow the pattern of going from Inputs -> Middle -> Outputs. So,
 # 3. Redux
 
 We've implemented the first component that has behaviour. However, it is not currently linked in to the rest of the application, so we need to implement Redux. I like to try to keep all redux-specfic library code in a single file, so we'll implement a [Redux](/src/Redux.js) component.
+
+We've seperated our concerns, and connected up our reducers, but we need to load the initial data. We need to add actions and handlers for loading the initial data. I've also added some tests for the redux store and combined reducers that should of been there earlier.

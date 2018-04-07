@@ -1,4 +1,4 @@
-import { types, toggleFilter } from './facilities-filter.actions.js';
+import { types, toggleFilter, loadFacilities } from './facilities-filter.actions.js';
 import reducer from './facilities-filter.reducer.js';
 
 describe('Facilities filter reducer', () => {
@@ -34,5 +34,13 @@ describe('Facilities filter reducer', () => {
     const actual = reducer(state, action);
 
     expect(actual).toEqual([]);
+  });
+
+  it('can load initial data', () => {
+    const items = [true]
+    const action = loadFacilities(items);
+    const actual = reducer(undefined, action);
+
+    expect(actual).toEqual(items);
   });
 })

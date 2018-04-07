@@ -7,6 +7,9 @@ const reducer = (state = defaultState, action) => {
     case types.toggleFilter: {
       return state.map((value, index) => action.index === index ? !value : value);
     }
+    case types.loadData: {
+      return action.items;
+    }
     default:
       return state;
   }

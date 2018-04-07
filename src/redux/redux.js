@@ -2,17 +2,18 @@ import React, { Component } from 'react';
 import { Provider, connect } from 'react-redux';
 import _ from 'lodash';
 
-import store from './redux.store';
 import Layout from '../layout/layout';
+import { loadFacilities } from '../facilities-filter/facilities-filter.actions';
+import { loadSearchResultItems } from '../search-results/search-results.actions';
 
 export const mapStateToProps = state => {
-  const allFacilities = _(state.items).flatMap(i => i.Facilities).uniq();
-  const filterStates = allFacilities.map((_, i) => state.filters[i]);
-  const filteredItems = _.filter(state.items, (item) => _.intersection(state.filters, item.Facilities).length > 0);
+  const allFacilities = _(state.items).flatMap(i => i.Facilities).uniq().value();
+  const enabledFilters = allFacilities.filter((_, i) => state.enabledFilters[i]);
+  const filteredItems = _.filter(state.items, (item) => _.intersection(enabledFilters, item.Facilities).length > 0);
   
   return {
     filters: {
-      states: filterStates,
+      states: state.enabledFilters,
       labels: allFacilities
     },
     items: filteredItems
@@ -26,9 +27,26 @@ const ConnectedLayout = connect(
   mapDispatchToProps,
 )(Layout);
 
-const Redux = () => (
-  <Provider store={store}>
-    <ConnectedLayout />
-  </Provider>);
+class Redux extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+  componentDidMount() {
+    const filterValues = this.props.items.map(_ => true);
+    const loadFiltersActions = loadFacilities(filterValues);
+    this.props.store.dispatch(loadFiltersActions);
+
+    const loadItemsAction = loadSearchResultItems(this.props.items);
+    this.props.store.dispatch(loadItemsAction);
+  }
+
+  render() {
+    return (
+      <Provider store={this.props.store} >
+        <ConnectedLayout />
+      </Provider>);
+  }
+}
 
 export default Redux;
