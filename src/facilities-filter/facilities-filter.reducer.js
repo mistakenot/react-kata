@@ -14,7 +14,7 @@ const reducer = (state = defaultState, action) => {
     case types.loadData: {
       return action
         .items
-        .reduce((state, item) => ({...state, [item]: true}), {});
+        .reduce((state, item) => ({...state, [item]: false}), {});
     }
     default:
       return state;

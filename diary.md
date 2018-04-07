@@ -104,3 +104,8 @@ We've implemented the first component that has behaviour. However, it is not cur
 We've seperated our concerns, and connected up our reducers, but we need to load the initial data. We need to add actions and handlers for loading the initial data. I've also added some tests for the redux store and combined reducers that should of been there earlier.
 
 I'm not really happy with how the filtering state is represented and calculated. Using an array of bools and relying on the index seems a bit flimsy, so I'm going to change it to use a key -> value map instead. I start by changing the tests first, then the code.
+
+Connecting everything revealed that the checkbox wasn't working properly, so I changed that. I was also missing some coverage in the Layout component.
+
+Also, I noticed an error I made - in the first place, I didn't really write proper acceptance test when I came to add the facility filter functionality. I jumped straight to the component, which goes against the ethos of TDD. I'll add it retrospectively now and will remember to do it correctly for the next one.
+

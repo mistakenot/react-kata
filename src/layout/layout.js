@@ -2,7 +2,7 @@ import React from 'react';
 import { Grid, Navbar, Jumbotron, Row, Col } from 'react-bootstrap';
 
 import SearchResults from '../search-results/search-results';
-import FilterForm from '../facilities-filter/facilities-filter-form';
+import FilterForm from '../facilities-filter/facilities-filter-form/facilities-filter-form';
 
 const Layout = props => (
   <div>

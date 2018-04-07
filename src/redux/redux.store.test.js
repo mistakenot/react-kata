@@ -25,7 +25,7 @@ describe('Store', () => {
 
     const actual = store.getState();
     const expected = {
-      ['f1']: true
+      ['f1']: false
     };
     expect(actual.filters).toEqual(expected);
   });

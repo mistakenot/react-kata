@@ -1,18 +1,18 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import FacilitiesFilter, { styles } from './facilities-filter';
+import FacilitiesFilterItem, { styles } from './facilities-filter-item';
 
 describe('Facilities filter form', () => {
   const label = 'one';
   const status = true;
 
   it('renders without crashing', () => {
-    shallow(<FacilitiesFilter label={label} status={status} />);
+    shallow(<FacilitiesFilterItem label={label} status={status} />);
   });
 
   it('can display a name of facility', () => {
-    const wrapper = shallow(<FacilitiesFilter label={label} status={status} />);
+    const wrapper = shallow(<FacilitiesFilterItem label={label} status={status} />);
     const facilityText = wrapper
       .find('.' + styles.facility)
       .first()
@@ -22,7 +22,7 @@ describe('Facilities filter form', () => {
   });
 
   it('can display an active facility filter', () => {
-    const wrapper = shallow(<FacilitiesFilter label={label} status={true} />);
+    const wrapper = shallow(<FacilitiesFilterItem label={label} status={true} />);
     const checkedStatus = wrapper
       .find('.' + styles.facilityStatus)
       .first()
@@ -33,7 +33,7 @@ describe('Facilities filter form', () => {
   });
 
   it('can display an inactive facility filter', () => {
-    const wrapper = shallow(<FacilitiesFilter label={label} status={false} />);
+    const wrapper = shallow(<FacilitiesFilterItem label={label} status={false} />);
     const checkedStatus = wrapper
       .find('.' + styles.facilityStatus)
       .first()
@@ -45,7 +45,7 @@ describe('Facilities filter form', () => {
 
   it('can raise an onclick event when clicked', () => {
     const spy = jest.fn();
-    const wrapper = shallow(<FacilitiesFilter label={label} status={status} onClick={spy} />);
+    const wrapper = shallow(<FacilitiesFilterItem label={label} status={status} onClick={spy} />);
     wrapper
       .find('.' + styles.facilityStatus)
       .first()

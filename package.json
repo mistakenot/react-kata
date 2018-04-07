@@ -2,7 +2,8 @@
   "name": "react-kata",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://charliedaly.co.uk/react-kata",
+  "homepage": ".",
+  "deployedHomepage": "https://charliedaly.co.uk/react-kata/",
   "dependencies": {
     "bootstrap": "^3.3.7",
     "enzyme": "^3.3.0",
@@ -20,15 +21,17 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
+    "test-e2e": "npm run build && jasmine --filter=\"App\"",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build && npm run e2e",
-    "e2e": "jasmine"
+    "e2e": "jasmine --filter=\"Deployment\""
   },
   "devDependencies": {
     "chromedriver": "^2.12.0",
     "gh-pages": "^1.1.0",
     "jasmine": "^3.1.0",
-    "selenium-webdriver": "^4.0.0-alpha.1"
+    "selenium-webdriver": "^4.0.0-alpha.1",
+    "serve": "^6.5.3"
   }
 }

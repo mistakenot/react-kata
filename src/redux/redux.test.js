@@ -34,7 +34,7 @@ describe('Redux component', () => {
   });
 
   describe('state to props', () => {
-    it('can map redux state to application state', () => {
+    it('can map state with active filters', () => {
       let state = {
         filters: {
           'f1': false,
@@ -54,6 +54,38 @@ describe('Redux component', () => {
       };
 
       expect(actual).toEqual(expected);
+    });
+
+    it('can map state with inactive filters', () => {
+      let state = {
+        filters: {
+          'f1': false,
+          'f2': false
+        },
+        items: [
+          { Name: 'one', Facilities: ['f1', 'f2'] },
+          { Name: 'two', Facilities: ['f1'] } ]
+      }
+
+      let actual = mapStateToProps(state);
+
+      expect(actual).toEqual(state);
+    });
+
+    it('can map state with no overlapping filters', () => {
+      let state = {
+        filters: {
+          'f1': true,
+          'f2': true
+        },
+        items: [
+          { Name: 'one', Facilities: ['f1'] },
+          { Name: 'two', Facilities: ['f2'] } ]
+      }
+
+      let actual = mapStateToProps(state);
+
+      expect(actual.items).toEqual([]);
     });
   });
 

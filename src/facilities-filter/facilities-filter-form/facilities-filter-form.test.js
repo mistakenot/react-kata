@@ -2,8 +2,8 @@ import React from 'react';
 import { shallow, mount } from 'enzyme';
 
 import FacilitiesFilterForm, { styles } from './facilities-filter-form';
-import FacilitiesFilter from './facilities-filter';
-import { types } from './facilities-filter.actions';
+import FacilitiesFilterItem from './facilities-filter-item/facilities-filter-item';
+import { types } from '../facilities-filter.actions';
 
 describe('Facilities filter form', () => {
   const filters = {
@@ -18,7 +18,7 @@ describe('Facilities filter form', () => {
   it('can display a list of all facility options', () => {
     const wrapper = shallow(<FacilitiesFilterForm filters={filters} />);
     const facillityCount = wrapper
-      .find(FacilitiesFilter)
+      .find(FacilitiesFilterItem)
       .length;
 
     expect(facillityCount).toEqual(2);
@@ -29,7 +29,7 @@ describe('Facilities filter form', () => {
     const wrapper = mount(<FacilitiesFilterForm filters={filters} onToggleFilter={spy} />);
     
     wrapper
-      .find(FacilitiesFilter)
+      .find(FacilitiesFilterItem)
       .first()
       .find('input')
       .simulate('change');

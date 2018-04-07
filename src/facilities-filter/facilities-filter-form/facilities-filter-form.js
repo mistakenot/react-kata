@@ -1,8 +1,8 @@
 import React from 'react';
 import _ from 'lodash';
 
-import FacilitiesFilter from './facilities-filter';
-import { toggleFilter } from './facilities-filter.actions';
+import FacilitiesFilterItem from './facilities-filter-item/facilities-filter-item';
+import { toggleFilter } from '../facilities-filter.actions';
 import { FormGroup } from 'react-bootstrap';
 
 export const styles = {
@@ -14,7 +14,7 @@ const FacilitiesFilterForm = props => (
   <form className={'inline'}>
     <FormGroup>
     { _(props.filters).map((enabled, label) => 
-      <FacilitiesFilter 
+      <FacilitiesFilterItem 
         key={label} 
         label={label} 
         status={enabled} 

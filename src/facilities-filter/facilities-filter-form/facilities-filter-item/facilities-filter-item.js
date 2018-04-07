@@ -7,10 +7,10 @@ export const styles = {
   facilityStatus: 'facilities-status'
 }
 
-const FacilitiesFilter = props => (
+const FacilitiesFilterItem = props => (
   <Checkbox inline className={styles.facilityStatus} defaultChecked={props.status} onChange={props.onClick}>
-    <div className={styles.facility}>{props.label}</div>
+    <div className={styles.facility} value={props.label} >{props.label}</div>
   </Checkbox>
 )
 
-export default FacilitiesFilter;
+export default FacilitiesFilterItem;

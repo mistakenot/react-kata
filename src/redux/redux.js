@@ -14,7 +14,8 @@ export const mapStateToProps = state => {
 
   const filteredItems =_(state.items)
     .filter((item) => 
-      _.intersection(enabledFilters, item.Facilities).length > 0)
+      enabledFilters.length === 0 || 
+      _.intersection(enabledFilters, item.Facilities).length >= enabledFilters.length)
     .value();
 
   return {

@@ -41,6 +41,6 @@ describe('Facilities filter reducer', () => {
     const action = loadFacilities(items);
     const actual = reducer(undefined, action);
 
-    expect(actual).toEqual({'name': true});
+    expect(actual).toEqual({'name': false});
   });
 })

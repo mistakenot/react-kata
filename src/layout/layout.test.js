@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 
 import Layout from './layout';
-import FilterForm from '../facilities-filter/facilities-filter-form';
+import FilterForm from '../facilities-filter/facilities-filter-form/facilities-filter-form';
 import SearchResults from '../search-results/search-results';
 
 describe('Layout component', () => {
