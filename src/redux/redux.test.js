@@ -104,6 +104,7 @@ describe('Redux component', () => {
       let actual = mapStateToProps(state);
       let ratings = actual.items.map(i => i.StarRating);
       expect(ratings).toEqual([5,4,3]);
+      expect(actual.sorting).toBeTruthy();
     });
   });
 

@@ -25,7 +25,8 @@ export const mapStateToProps = state => {
 
   return {
     filters: state.filters,
-    items: state.sorting ? sortedItems : filteredItems
+    items: state.sorting ? sortedItems : filteredItems,
+    sorting: state.sorting
   };
 }
 

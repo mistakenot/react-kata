@@ -21,12 +21,10 @@ const Layout = props => (
       <Grid>
         <h1>Search Results</h1>
         <Row>
-          <Col md={6}>
-            <Sorting dispatch={props.dispatch} />
+          <Col md={1}>
+            <Sorting dispatch={props.dispatch} sorting={props.sorting} />
           </Col>
-        </Row>
-        <Row>
-          <Col md={6}>
+          <Col md={5}>
             <FilterForm filters={props.filters} dispatch={props.dispatch} />
           </Col>
         </Row>
@@ -37,6 +35,6 @@ const Layout = props => (
         </Row>
       </Grid>
     </Jumbotron>
-</div>);
+  </div>);
 
 export default Layout;
